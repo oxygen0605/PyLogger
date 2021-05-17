@@ -2,7 +2,7 @@
 #define __MyLogger_H_
 
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <stdint.h>
 
 typedef struct MyLogger {
@@ -30,8 +30,14 @@ extern MyLogger logger;
 #define INF_FLOG(...) 
 #define DBG_FLOG(...) 
 
-#else
+#elif FERR_ON
 #define ERR_FLOG(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define WRN_FLOG(...) 
+#define INF_FLOG(...) 
+#define DBG_FLOG(...) 
+
+#else
+#define ERR_FLOG(...) 
 #define WRN_FLOG(...) 
 #define INF_FLOG(...) 
 #define DBG_FLOG(...) 
@@ -39,28 +45,35 @@ extern MyLogger logger;
 #endif // FDEG_ON
 
 #ifdef PDBG_ON
-#define ERR_LOG(...) printf("ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) printf("WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define INF_LOG(...) printf("INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define DBG_LOG(...) printf("DBG:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define WRN_LOG(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define INF_LOG(...) fprintf(stdout, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define DBG_LOG(...) fprintf(stdout, "DBG:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
 
 #elif PINF_ON
-#define ERR_LOG(...) printf("ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) printf("WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define INF_LOG(...) printf("INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define WRN_LOG(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define INF_LOG(...) fprintf(stdout, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
 #define DBG_LOG(...)
 
 #elif PWRN_ON
-#define ERR_LOG(...) printf("ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) printf("WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define WRN_LOG(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
 #define INF_LOG(...) 
 #define DBG_LOG(...)
 
-#else 
-#define ERR_LOG(...) printf("ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#elif PERR_ON
+#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
 #define WRN_LOG(...) 
 #define INF_LOG(...) 
 #define DBG_LOG(...)
+
+#else
+#define ERR_LOG(...) 
+#define WRN_LOG(...) 
+#define INF_LOG(...) 
+#define DBG_LOG(...)
+
 
 #endif // PDEG_ON
 
