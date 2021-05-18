@@ -12,67 +12,70 @@ typedef struct MyLogger {
 } MyLogger;
 extern MyLogger logger;
 
+/* File Log MACRO */
 #ifdef FDBG_ON
-#define ERR_FLOG(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define WRN_FLOG(...) fprintf(logger.pfile, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define INF_FLOG(...) fprintf(logger.pfile, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define DBG_FLOG(...) fprintf(logger.pfile, "DBG:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGE(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGW(...) fprintf(logger.pfile, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGI(...) fprintf(logger.pfile, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGD(...) fprintf(logger.pfile, "DBG:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
 
 #elif FINF_ON
-#define ERR_FLOG(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define WRN_FLOG(...) fprintf(logger.pfile, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define INF_FLOG(...) fprintf(logger.pfile, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define DBG_FLOG(...) 
+#define FLOGE(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGW(...) fprintf(logger.pfile, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGI(...) fprintf(logger.pfile, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGD(...) 
 
 #elif FWRN_ON
-#define ERR_FLOG(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define WRN_FLOG(...) fprintf(logger.pfile, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define INF_FLOG(...) 
-#define DBG_FLOG(...) 
+#define FLOGE(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGW(...) fprintf(logger.pfile, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGI(...) 
+#define FLOGD(...) 
 
 #elif FERR_ON
-#define ERR_FLOG(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
-#define WRN_FLOG(...) 
-#define INF_FLOG(...) 
-#define DBG_FLOG(...) 
+#define FLOGE(...) fprintf(logger.pfile, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), fprintf(logger.pfile, __VA_ARGS__)
+#define FLOGW(...) 
+#define FLOGI(...) 
+#define FLOGD(...) 
 
 #else
-#define ERR_FLOG(...) 
-#define WRN_FLOG(...) 
-#define INF_FLOG(...) 
-#define DBG_FLOG(...) 
+#define FLOGE(...) 
+#define FLOGW(...) 
+#define FLOGI(...) 
+#define FLOGD(...) 
 
 #endif // FDEG_ON
 
+
+/* Print Log MACRO */
 #ifdef PDBG_ON
-#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define INF_LOG(...) fprintf(stdout, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define DBG_LOG(...) fprintf(stdout, "DBG:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGI(...) fprintf(stdout, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGD(...) fprintf(stdout, "DBG:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
 
 #elif PINF_ON
-#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define INF_LOG(...) fprintf(stdout, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define DBG_LOG(...)
+#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGI(...) fprintf(stdout, "INF:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGD(...) 
 
 #elif PWRN_ON
-#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define INF_LOG(...) 
-#define DBG_LOG(...)
+#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) fprintf(stdout, "WRN:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGI(...) 
+#define PLOGD(...) 
 
 #elif PERR_ON
-#define ERR_LOG(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
-#define WRN_LOG(...) 
-#define INF_LOG(...) 
-#define DBG_LOG(...)
+#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", __FILE__, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) 
+#define PLOGI(...) 
+#define PLOGD(...) 
 
 #else
-#define ERR_LOG(...) 
-#define WRN_LOG(...) 
-#define INF_LOG(...) 
-#define DBG_LOG(...)
+#define PLOGE(...) 
+#define PLOGW(...) 
+#define PLOGI(...) 
+#define PLOGD(...) 
 
 
 #endif // PDEG_ON

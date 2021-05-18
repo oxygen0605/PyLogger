@@ -2,28 +2,31 @@
 #include "logger.h"
 
 void test(){
-    ERR_FLOG("File Logger World!\n");
-    WRN_FLOG("File Logger World!\n");
-    INF_FLOG("File Logger World!\n");
-    DBG_FLOG("File Logger World!\n");
+    FLOGE("File Logger World!\n");
+    FLOGW("File Logger World!\n");
+    FLOGI("File Logger World!\n");
+    FLOGD("File Logger World!\n");
 
-    ERR_LOG("logger world!\n");
-    WRN_LOG("logger world!\n");
-    INF_LOG("logger world!\n");
-    DBG_LOG("logger world!\n");
+    PLOGE("logger world!\n");
+    PLOGW("logger world!\n");
+    PLOGI("logger world!\n");
+    PLOGD("logger world!\n");
 }
 
 int main() {
     logger.open("test.log");
-    ERR_FLOG("File Logger World!\n");
-    WRN_FLOG("File Logger World!\n");
-    INF_FLOG("File Logger World!\n");
-    DBG_FLOG("File Logger World!\n");
     
-    ERR_LOG("logger world!\n");
-    WRN_LOG("logger world!\n");
-    INF_LOG("logger world!\n");
-    DBG_LOG("logger world!\n");
+    
+    FLOGE("File Logger World!\n");
+    FLOGW("File Logger World!\n");
+    FLOGI("File Logger World!\n");
+    FLOGD("File Logger World!\n");
+
+    PLOGE("logger world!\n");
+    PLOGW("logger world!\n");
+    PLOGI("logger world!\n");
+    PLOGD("logger world!\n");
+    
     test();
 
     logger.close("log.txt");
