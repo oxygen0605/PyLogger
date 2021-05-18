@@ -51,25 +51,25 @@ extern MyLogger logger;
 
 /* Print Log MACRO */
 #ifdef PDBG_ON
-#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
-#define PLOGW(...) fprintf(stdout, "WRN:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
-#define PLOGI(...) fprintf(stdout, "INF:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
-#define PLOGD(...) fprintf(stdout, "DBG:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGE(...) fprintf(stderr, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) fprintf(stderr, "WRN:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGI(...) fprintf(stderr, "INF:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGD(...) fprintf(stderr, "DBG:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
 
 #elif PINF_ON
-#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
-#define PLOGW(...) fprintf(stdout, "WRN:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
-#define PLOGI(...) fprintf(stdout, "INF:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGE(...) fprintf(stderr, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) fprintf(stderr, "WRN:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGI(...) fprintf(stderr, "INF:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
 #define PLOGD(...) 
 
 #elif PWRN_ON
-#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
-#define PLOGW(...) fprintf(stdout, "WRN:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGE(...) fprintf(stderr, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGW(...) fprintf(stderr, "WRN:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
 #define PLOGI(...) 
 #define PLOGD(...) 
 
 #elif PERR_ON
-#define PLOGE(...) fprintf(stdout, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
+#define PLOGE(...) fprintf(stderr, "ERR:%s(%d) %s:", FILE_NAME, __LINE__, __func__), printf(__VA_ARGS__)
 #define PLOGW(...) 
 #define PLOGI(...) 
 #define PLOGD(...) 
